@@ -157,7 +157,7 @@ bind/44/bone = 44
 bind/44/pose = Transform( -0.992803, 0.119375, 0.00958424, -0.119663, -0.992026, -0.0395741, 0.00478367, -0.0404362, 0.999171, -0.00340618, -0.00128335, -0.000149813 )
 
 [node name="Enemy" type="KinematicBody"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -0.7, 0, -2.7259e-07, 0, 0.7, 0, 2.7259e-07, 0, -0.7, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Root" type="Skeleton" parent="."]
