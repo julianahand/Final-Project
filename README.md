@@ -16,8 +16,12 @@ Features
 Assets, or resources used
 
 ## References
+Pete Parker. Comment on “Need some help on making the enemy chasing the player in 3D First Person” Godot, March 2020, n.t., https://godotforums.org/discussion/22376/need-some-help-on-making-the-enemy-chasing-the-player-in-3d-first-person
 
 ## Future Development
 
 # Created by: Group Name
-List of group members (and contributions)
+Juliana Hand (and contributions)
+Chloe Tod (and contributions)
+Liv Callahan (and contributions)
+Jamie Dunbar (and contributions)
