@@ -28,7 +28,7 @@ Other assets were downloaded from kenney.nl
 Inspired by "Outlast" by Red Barrels
 
 ## Future Development
-Furnish the hospital and add mementos from the deceased patients to collect.
+Furnish the hospital, add additional enemies and add mementos from the deceased patients to collect.
 
 # Created by: QWERTY
 Juliana Hand (level design and coding, key and exit code, enemy mesh)
