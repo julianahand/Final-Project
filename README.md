@@ -21,4 +21,7 @@ Pete Parker. Comment on “Need some help on making the enemy chasing the player
 ## Future Development
 
 # Created by: Group Name
-List of group members (and contributions)
+Juliana Hand (and contributions)
+Chloe Tod (and contributions)
+Liv Callahan (and contributions)
+Jamie Dunbar (and contributions)
