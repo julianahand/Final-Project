@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/skin.material" type="Material" id=1]
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Assets/zombieA.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.86951, 0.297203 )
@@ -159,19 +160,24 @@ bind/44/name = ""
 bind/44/bone = 44
 bind/44/pose = Transform( -0.992803, 0.119375, 0.00958424, -0.119663, -0.992026, -0.0395741, 0.00478367, -0.0404362, 0.999171, -0.00340618, -0.00128335, -0.000149813 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 1.65292, 1.99265, 0.771625 )
 
 [node name="Enemy" type="KinematicBody"]
-transform = Transform( -0.7, 0, -2.28089e-07, 0, 0.7, 0, 2.28089e-07, 0, -0.7, 0, 0, -17 )
+transform = Transform( 0.7, 0, -4.56178e-07, 0, 0.7, 0, 4.56178e-07, 0, 0.7, 0, 0, -17 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92367, 0 )
 shape = SubResource( 1 )
 
-[node name="Root" type="Skeleton" parent="."]
-transform = Transform( 100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0 )
+[node name="Root" type="Spatial" parent="."]
+
+[node name="Skeleton" type="Skeleton" parent="Root"]
+transform = Transform( 100, 0, -4.33681e-19, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0 )
 bones/0/name = "LeftFootCtrl"
 bones/0/parent = -1
 bones/0/rest = Transform( -3.57628e-07, -2.38419e-07, -1, 1, -1.19209e-07, -3.57628e-07, -1.19209e-07, -1, 2.38419e-07, 0.00204209, 0.0014881, 0.00193205 )
@@ -398,49 +404,49 @@ bones/44/rest = Transform( -0.997107, 0.0387739, -0.0653688, 0.069063, 0.821303,
 bones/44/enabled = true
 bones/44/bound_children = [  ]
 
-[node name="LeftFootIK_end" type="Spatial" parent="Root"]
+[node name="LeftFootIK_end" type="Spatial" parent="Root/Skeleton"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00301254, 0 )
 
-[node name="LeftFootRollCtrl_end" type="Spatial" parent="Root/LeftFootIK_end"]
+[node name="LeftFootRollCtrl_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00292767, 0 )
 
-[node name="LeftKneeCtrl_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end"]
+[node name="LeftKneeCtrl_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00336816, 0 )
 
-[node name="RightFootIK_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end"]
+[node name="RightFootIK_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00301254, 0 )
 
-[node name="RightFootRollCtrl_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end"]
+[node name="RightFootRollCtrl_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00292767, 0 )
 
-[node name="RightKneeCtrl_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end"]
+[node name="RightKneeCtrl_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00336816, 0 )
 
-[node name="Head_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end"]
+[node name="Head_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0100441, 0 )
 
-[node name="LeftHandIndex3_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end"]
+[node name="LeftHandIndex3_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00130499, 0 )
 
-[node name="LeftHandThumb2_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end"]
+[node name="LeftHandThumb2_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0013226, 0 )
 
-[node name="RightHandIndex3_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end"]
+[node name="RightHandIndex3_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00130499, 0 )
 
-[node name="RightHandThumb2_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end"]
+[node name="RightHandThumb2_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0013226, 0 )
 
-[node name="LeftToes_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end/RightHandThumb2_end"]
+[node name="LeftToes_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end/RightHandThumb2_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00213236, 0 )
 
-[node name="RightToes_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end/RightHandThumb2_end/LeftToes_end"]
+[node name="RightToes_end" type="Spatial" parent="Root/Skeleton/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end/LeftHandThumb2_end/RightHandIndex3_end/RightHandThumb2_end/LeftToes_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00213236, 0 )
 
-[node name="characterMedium" type="MeshInstance" parent="Root"]
+[node name="characterMedium" type="MeshInstance" parent="Root/Skeleton"]
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 4 )
 
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83143, 0 )
@@ -452,5 +458,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00666, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
