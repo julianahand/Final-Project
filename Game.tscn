@@ -1,8 +1,9 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player_Container.gd" type="Script" id=1]
 [ext_resource path="res://Exit/Exit.gd" type="Script" id=2]
 [ext_resource path="res://Key/key.tscn" type="PackedScene" id=3]
+
 [ext_resource path="res://Textures/Cracked_Plaster.tres" type="Material" id=4]
 [ext_resource path="res://Textures/Plaster.tres" type="Material" id=5]
 [ext_resource path="res://Assets/Textures/Tiles078_1K_Normal.jpg" type="Texture" id=6]
@@ -14,6 +15,7 @@
 [ext_resource path="res://Assets/The Ninth Crewman.ogg" type="AudioStream" id=12]
 [ext_resource path="res://UI/InputRemapMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/coin.wav" type="AudioStream" id=14]
+
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 50 )
@@ -513,6 +515,7 @@ material = ExtResource( 4 )
 [node name="CSGBox27" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6295, 4.48054, -23.6466 )
 use_collision = true
+
 depth = 3.536
 material = ExtResource( 5 )
 
@@ -631,4 +634,5 @@ stream = ExtResource( 14 )
 [node name="Menu" parent="UI" instance=ExtResource( 13 )]
 pause_mode = 2
 visible = false
+
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]

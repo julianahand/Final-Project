@@ -5,6 +5,10 @@ const SAVE_PATH = "res://settings.cfg"
 var save_file = ConfigFile.new()
 var inputs = ["left","right","forward","back"]
 
+var lives = 3
+var score = 0
+var time = 0
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	load_input()
@@ -39,3 +43,8 @@ func save_input():
 		for a in actions:
 			save_file.set_value("Inputs", i, a)
 	save_file.save(SAVE_PATH)
+	
+func decrease_lives(l):
+	lives = lives - l
+	if(lives <= 0):
+		var _scene = get_tree().change_scene("res://UI/Lose.tscn")	

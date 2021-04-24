@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ZillaSlab-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/FreckleFace-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/main_pic.jpg" type="Texture" id=4]
 [ext_resource path="res://Assets/Abuse In The Orphanage.ogg" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -32,26 +31,25 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Box" type="ColorRect" parent="."]
-margin_left = 523.0
-margin_top = 159.0
-margin_right = 895.0
-margin_bottom = 408.0
+margin_left = 328.0
+margin_top = 124.0
+margin_right = 700.0
+margin_bottom = 373.0
 color = Color( 0, 0, 0, 0.705882 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="."]
-margin_left = 190.302
-margin_top = -44.4573
-margin_right = 1214.3
-margin_bottom = 235.543
+margin_left = 3.97696
+margin_top = -38.5018
+margin_right = 1027.97
+margin_bottom = 241.498
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.439216, 0.211765, 0.156863, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -64,10 +62,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 196.0
-margin_top = 29.0
-margin_right = 1220.0
-margin_bottom = 413.0
+margin_left = -3.29248
+margin_top = 7.9776
+margin_right = 1020.71
+margin_bottom = 391.978
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.933333, 0.886275, 0.823529, 1 )
 text = "You wake up in an unfamiliar 
@@ -81,20 +79,23 @@ __meta__ = {
 
 [node name="Play" type="Button" parent="."]
 modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
-margin_left = 666.061
-margin_top = 274.121
-margin_right = 766.061
-margin_bottom = 314.121
+margin_left = 460.041
+margin_top = 264.03
+margin_right = 560.041
+margin_bottom = 304.03
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 3 )
 text = "Play Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Quit" type="Button" parent="."]
 modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
-margin_left = 667.061
-margin_top = 334.0
-margin_right = 767.061
-margin_bottom = 374.0
+margin_left = 460.2
+margin_top = 319.705
+margin_right = 560.2
+margin_bottom = 359.705
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 3 )
 text = "Quit Game"

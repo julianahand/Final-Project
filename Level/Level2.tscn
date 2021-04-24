@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Exit/Exit.gd" type="Script" id=2]
+[ext_resource path="res://Level/Win.gd" type="Script" id=2]
 [ext_resource path="res://Key/key.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Textures/Tiles078_1K_Normal.jpg" type="Texture" id=4]
 [ext_resource path="res://Textures/Hole.tres" type="Material" id=5]
@@ -108,6 +108,7 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
 mesh = SubResource( 5 )
+
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Maze/Walls"]
@@ -117,6 +118,7 @@ shape = SubResource( 6 )
 [node name="MeshInstance2" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
 mesh = SubResource( 5 )
+
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Maze/Walls"]
@@ -126,6 +128,7 @@ shape = SubResource( 7 )
 [node name="MeshInstance3" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
 mesh = SubResource( 8 )
+
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Maze/Walls"]
@@ -135,6 +138,7 @@ shape = SubResource( 9 )
 [node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
 mesh = SubResource( 8 )
+
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Maze/Walls"]

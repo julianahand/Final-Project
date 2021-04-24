@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Deathomatic"
+config/name="Horrendoma"
 run/main_scene="res://UI/Main.tscn"
 config/icon="res://icon.png"
 
