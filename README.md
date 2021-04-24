@@ -5,7 +5,7 @@ MSCH-C220 Game Jam, April 2021
 Horror-themed 3D hospital 
 
 ## Game Play
-Escape the hospital 
+Escape the hospital.
 Use the arrow keys to move your character through the building and avoid enemies.
 
 ## Impediments
