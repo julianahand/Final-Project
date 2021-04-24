@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/skin.material" type="Material" id=1]
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Assets/zombieA.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.86951, 0.297203 )
@@ -159,8 +160,19 @@ bind/44/name = ""
 bind/44/bone = 44
 bind/44/pose = Transform( -0.992803, 0.119375, 0.00958424, -0.119663, -0.992026, -0.0395741, 0.00478367, -0.0404362, 0.999171, -0.00340618, -0.00128335, -0.000149813 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
+emission_enabled = true
+emission = Color( 0.338995, 0.367332, 0.371094, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 1.65292, 1.99265, 0.771625 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
 
 [node name="Enemy" type="KinematicBody"]
 transform = Transform( -0.7, 0, -2.28089e-07, 0, 0.7, 0, 2.28089e-07, 0, -0.7, 0, 0, -17 )
@@ -420,7 +432,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00336816, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0100441, 0 )
 
 [node name="LeftHandIndex3_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00130499, 0 )
+transform = Transform( 1, 0, 3.38813e-21, 0, 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0.001305, 1.77636e-15 )
 
 [node name="LeftHandThumb2_end" type="Spatial" parent="Root/LeftFootIK_end/LeftFootRollCtrl_end/LeftKneeCtrl_end/RightFootIK_end/RightFootRollCtrl_end/RightKneeCtrl_end/Head_end/LeftHandIndex3_end"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0013226, 0 )
@@ -440,7 +452,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00213236, 0 )
 [node name="characterMedium" type="MeshInstance" parent="Root"]
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 4 )
 
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83143, 0 )
@@ -452,5 +464,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00666, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

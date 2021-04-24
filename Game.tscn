@@ -614,7 +614,6 @@ anims/Lights = SubResource( 16 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-autoplay = true
 
 [node name="Key" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
