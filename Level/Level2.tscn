@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Exit/Exit.gd" type="Script" id=2]
+[ext_resource path="res://Level/Win.gd" type="Script" id=2]
 [ext_resource path="res://Key/key.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
@@ -16,28 +16,28 @@ points = PoolVector3Array( 50, 0, 25, -50, 0, 25, 50, 0, -25, -50, 0, -25 )
 [sub_resource type="SphereShape" id=4]
 radius = 0.5
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=5]
 size = Vector3( 100, 6, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=8]
+[sub_resource type="ConvexPolygonShape" id=6]
 points = PoolVector3Array( -50, 3, 0.5, 50, 3, -0.5, 50, 3, 0.5, -50, 3, -0.5, -50, -3, 0.5, 50, -3, -0.5, 50, -3, 0.5, -50, -3, -0.5, 50, 3, 0.5, -50, 3, -0.5, 50, 3, -0.5, -50, 3, 0.5, 50, -3, 0.5, -50, -3, -0.5, 50, -3, -0.5, -50, -3, 0.5, 50, 3, 0.5, -50, -3, 0.5, -50, 3, 0.5, 50, -3, 0.5, 50, 3, -0.5, -50, -3, -0.5, -50, 3, -0.5, 50, -3, -0.5 )
 
-[sub_resource type="ConvexPolygonShape" id=9]
+[sub_resource type="ConvexPolygonShape" id=7]
 points = PoolVector3Array( -50, 3, 0.5, 50, 3, -0.5, 50, 3, 0.5, -50, 3, -0.5, -50, -3, 0.5, 50, -3, -0.5, 50, -3, 0.5, -50, -3, -0.5, 50, 3, 0.5, -50, 3, -0.5, 50, 3, -0.5, -50, 3, 0.5, 50, -3, 0.5, -50, -3, -0.5, 50, -3, -0.5, -50, -3, 0.5, 50, 3, 0.5, -50, -3, 0.5, -50, 3, 0.5, 50, -3, 0.5, 50, 3, -0.5, -50, -3, -0.5, -50, 3, -0.5, 50, -3, -0.5 )
 
-[sub_resource type="CubeMesh" id=10]
+[sub_resource type="CubeMesh" id=8]
 size = Vector3( 1, 6, 50 )
 
-[sub_resource type="ConvexPolygonShape" id=11]
+[sub_resource type="ConvexPolygonShape" id=9]
 points = PoolVector3Array( -0.5, 3, 25, 0.5, 3, -25, 0.5, 3, 25, -0.5, 3, -25, -0.5, -3, 25, 0.5, -3, -25, 0.5, -3, 25, -0.5, -3, -25, 0.5, 3, 25, -0.5, 3, -25, 0.5, 3, -25, -0.5, 3, 25, 0.5, -3, 25, -0.5, -3, -25, 0.5, -3, -25, -0.5, -3, 25, 0.5, 3, 25, -0.5, -3, 25, -0.5, 3, 25, 0.5, -3, 25, 0.5, 3, -25, -0.5, -3, -25, -0.5, 3, -25, 0.5, -3, -25 )
 
-[sub_resource type="ConvexPolygonShape" id=12]
+[sub_resource type="ConvexPolygonShape" id=10]
 points = PoolVector3Array( -0.5, 3, 25, 0.5, 3, -25, 0.5, 3, 25, -0.5, 3, -25, -0.5, -3, 25, 0.5, -3, -25, 0.5, -3, 25, -0.5, -3, -25, 0.5, 3, 25, -0.5, 3, -25, 0.5, 3, -25, -0.5, 3, 25, 0.5, -3, 25, -0.5, -3, -25, 0.5, -3, -25, -0.5, -3, 25, 0.5, 3, 25, -0.5, -3, 25, -0.5, 3, 25, 0.5, -3, 25, 0.5, 3, -25, -0.5, -3, -25, -0.5, 3, -25, 0.5, -3, -25 )
 
-[sub_resource type="CapsuleShape" id=5]
+[sub_resource type="CapsuleShape" id=11]
 radius = 0.5
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.4, 0.1, 0.1 )
 
 [node name="Game" type="Spatial"]
@@ -75,39 +75,39 @@ shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="CollisionShape2" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
-mesh = SubResource( 10 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="CollisionShape3" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
-mesh = SubResource( 10 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="CollisionShape4" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0074, 3, 5.76864 )
@@ -395,11 +395,11 @@ script = ExtResource( 1 )
 
 [node name="Body" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.3, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 11 )
 
 [node name="Feet" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 12 )
 
 [node name="Pivot" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
