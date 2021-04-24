@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/skin.material" type="Material" id=1]
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 1.86951, 0.297203 )
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -156,9 +159,16 @@ bind/44/name = ""
 bind/44/bone = 44
 bind/44/pose = Transform( -0.992803, 0.119375, 0.00958424, -0.119663, -0.992026, -0.0395741, 0.00478367, -0.0404362, 0.999171, -0.00340618, -0.00128335, -0.000149813 )
 
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.65292, 1.99265, 0.771625 )
+
 [node name="Enemy" type="KinematicBody"]
-transform = Transform( -0.7, 0, -2.7259e-07, 0, 0.7, 0, 2.7259e-07, 0, -0.7, 0, 0, 0 )
+transform = Transform( -0.7, 0, -2.28089e-07, 0, 0.7, 0, 2.28089e-07, 0, -0.7, 0, 0, -17 )
 script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92367, 0 )
+shape = SubResource( 4 )
 
 [node name="Root" type="Skeleton" parent="."]
 transform = Transform( 100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0 )
@@ -436,3 +446,11 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83143, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -30 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00666, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

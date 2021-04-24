@@ -1,7 +1,6 @@
 extends KinematicBody
 
 var player = null
-var enemy = null
 var speed = 4
 
 onready var rc = $RayCast
@@ -16,6 +15,9 @@ func _physics_process(delta):
 		if c.is_in_group("Player"):
 			var target = player.translation - translation
 			var direction = target.normalized()
-			move_and_slide(speed*direction)
-			
-		
+			var _v = move_and_slide(speed*direction)
+
+
+func _on_Area_body_entered(body):
+	if body.name == "Player":
+		queue_free()
