@@ -4,7 +4,6 @@
 [ext_resource path="res://Exit/Exit.gd" type="Script" id=2]
 [ext_resource path="res://Key/key.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 50 )
 
@@ -407,10 +406,9 @@ shape = SubResource( 11 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 shape = SubResource( 12 )
 
-[node name="Pivot" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="Enemies" type="Spatial" parent="."]
+script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="Player/Pivot"]
 
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
-
