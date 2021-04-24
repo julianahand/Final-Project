@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/The Ninth Crewman.ogg-86dd5515fd87d2ccf7a4e958f9ac175f.oggstr"
+
+[deps]
+
+source_file="res://Assets/The Ninth Crewman.ogg"
+dest_files=[ "res://.import/The Ninth Crewman.ogg-86dd5515fd87d2ccf7a4e958f9ac175f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

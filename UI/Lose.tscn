@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Main.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ZillaSlab-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Lose_Screen.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/Typical Lullaby.ogg" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 15
+font_data = ExtResource( 2 )
+
+[node name="Lose" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background2" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="ColorRect" parent="."]
+margin_left = 328.196
+margin_top = 124.125
+margin_right = 692.196
+margin_bottom = 430.125
+color = Color( 0, 0, 0, 0.666667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 0.707031
+margin_top = 58.6898
+margin_right = 1024.71
+margin_bottom = 358.69
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.933333, 0.886275, 0.823529, 1 )
+text = "...You weren't able to save them."
+align = 1
+valign = 1
+
+[node name="Play" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 469.243
+margin_top = 268.385
+margin_right = 569.243
+margin_bottom = 308.385
+custom_fonts/font = SubResource( 2 )
+text = "Try Again?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 469.243
+margin_top = 330.0
+margin_right = 569.243
+margin_bottom = 370.0
+custom_fonts/font = SubResource( 2 )
+text = "Quit Game"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
