@@ -614,4 +614,7 @@ stream = ExtResource( 14 )
 [node name="Menu" parent="UI" instance=ExtResource( 13 )]
 pause_mode = 2
 visible = false
+
+[node name="Enemy2" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.7, 0, -4.56178e-07, 0, 0.7, 0, 4.56178e-07, 0, 0.7, -34.5117, 0, -17 )
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]

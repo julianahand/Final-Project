@@ -9,10 +9,20 @@ Escape the hospital alive.
 Use the arrow keys to move your character through the building and avoid enemies.
 
 ## Impediments
-Issues with implementation of skinning within Blender and solely virtual collaboration. When trying to merge different branches together, problems would arise such as the player falling through the floor or the pause menu being deleted.
+Issues with implementation of skinning within Blender. Challenges collaborating through solely virtual communication. When trying to merge different branches together, problems would arise such as the player falling through the floor or the pause menu being deleted. We underestimated the severity of the time constraint compared to our ambitions with the project.
 
 ## Implementation
-Built using Godot 3.2.3 and Blender 2.92.0
+Built using Godot 3.2.3 and Blender 2.92.0, WASD mappings
+
+Wall, floor and ceiling textures were downloaded from cc0textures.com
+
+Fonts "FreckleFace-Regular" and "ZillaSlab-Regular" were downloaded from Google Fonts
+
+Coin sound effect by Free-Rush on freesound.org
+
+All Music by Patrick de Arteaga (patrickdearteaga.com)
+
+Other assets were downloaded from kenney.nl
 
 ## References
 Inspired by "Outlast" by Red Barrels
@@ -22,6 +32,6 @@ Furnish the hospital and add mementos from the deceased patients to collect.
 
 # Created by: QWERTY
 Juliana Hand (level design and coding, key and exit code, enemy mesh)
-Chloe Tod (and contributions)
+Chloe Tod (brainstorming, rigging)
 Liv Callahan (UI coding and design, environment textures and lighting, music and sound effects)
 Jamie Dunbar (Handled majority of coding and debugging)

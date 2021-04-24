@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Level/Win.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://UI/InputRemapMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/The Ninth Crewman.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/coin.wav" type="AudioStream" id=13]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 50 )
@@ -108,7 +109,6 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
 mesh = SubResource( 5 )
-
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Maze/Walls"]
@@ -118,7 +118,6 @@ shape = SubResource( 6 )
 [node name="MeshInstance2" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
 mesh = SubResource( 5 )
-
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Maze/Walls"]
@@ -128,7 +127,6 @@ shape = SubResource( 7 )
 [node name="MeshInstance3" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
 mesh = SubResource( 8 )
-
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Maze/Walls"]
@@ -138,7 +136,6 @@ shape = SubResource( 9 )
 [node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
 mesh = SubResource( 8 )
-
 material/0 = ExtResource( 8 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Maze/Walls"]
@@ -557,4 +554,7 @@ stream = ExtResource( 13 )
 [node name="Menu" parent="UI" instance=ExtResource( 11 )]
 pause_mode = 2
 visible = false
+
+[node name="Enemy" parent="." instance=ExtResource( 14 )]
+transform = Transform( 0.7, 0, -4.56178e-07, 0, 0.7, 0, 4.56178e-07, 0, 0.7, -11.5175, 0, -12.0558 )
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
