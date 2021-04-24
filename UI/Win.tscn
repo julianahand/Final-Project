@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Main.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Win_Screen.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/ZillaSlab-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 15
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 3 )
+
+[node name="Win" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 325.243
+margin_top = 106.213
+margin_right = 688.243
+margin_bottom = 412.213
+color = Color( 0, 0, 0, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 0.242554
+margin_top = 28.2132
+margin_right = 1024.24
+margin_bottom = 328.213
+custom_fonts/font = SubResource( 1 )
+text = "You escaped the hospital successfully. 
+Their souls are at peace."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 466.243
+margin_top = 238.213
+margin_right = 566.243
+margin_bottom = 278.213
+custom_fonts/font = SubResource( 2 )
+text = "Play Again?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 467.243
+margin_top = 308.213
+margin_right = 567.243
+margin_bottom = 348.213
+custom_fonts/font = SubResource( 3 )
+text = "Quit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/Main.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ZillaSlab-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/FreckleFace-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/main_pic.jpg" type="Texture" id=4]
+[ext_resource path="res://Assets/Abuse In The Orphanage.ogg" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 90
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 4
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 19
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 2 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="ColorRect" parent="."]
+margin_left = 523.0
+margin_top = 159.0
+margin_right = 895.0
+margin_bottom = 408.0
+color = Color( 0, 0, 0, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 190.302
+margin_top = -44.4573
+margin_right = 1214.3
+margin_bottom = 235.543
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.439216, 0.211765, 0.156863, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Horrendoma"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 196.0
+margin_top = 29.0
+margin_right = 1220.0
+margin_bottom = 413.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.933333, 0.886275, 0.823529, 1 )
+text = "You wake up in an unfamiliar 
+hospital room.
+All you know is that you need to escape."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 666.061
+margin_top = 274.121
+margin_right = 766.061
+margin_bottom = 314.121
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 3 )
+text = "Play Game"
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color( 0.933333, 0.886275, 0.823529, 1 )
+margin_left = 667.061
+margin_top = 334.0
+margin_right = 767.061
+margin_bottom = 374.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 3 )
+text = "Quit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
