@@ -24,4 +24,4 @@ Furnish the hospital and add mementos from the deceased patients to collect.
 Juliana Hand (level design and coding, key and exit code, enemy mesh)
 Chloe Tod (and contributions)
 Liv Callahan (UI coding and design, environment textures and lighting, music and sound effects)
-Jamie Dunbar (and contributions)
+Jamie Dunbar (Handled majority of coding and debugging)
