@@ -20,8 +20,8 @@ Inspired by "Outlast" by Red Barrels
 ## Future Development
 Furnish the hospital and add mementos from the deceased patients to collect.
 
-# Created by: QWERTY
-Juliana Hand (and contributions)
+# Created by: Group Name
+Juliana Hand (level design, key and exit code, enemy mesh)
 Chloe Tod (and contributions)
 Liv Callahan (UI coding and design, environment textures and lighting, music and sound effects)
-Jamie Dunbar (Handled majority of the coding)
+Jamie Dunbar (and contributions)
