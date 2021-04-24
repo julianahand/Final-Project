@@ -1,14 +1,28 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Level/Win.gd" type="Script" id=2]
 [ext_resource path="res://Key/key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Textures/Tiles078_1K_Normal.jpg" type="Texture" id=4]
+[ext_resource path="res://Textures/Hole.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Textures/Tiles078_1K_Roughness.jpg" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/Tiles078_1K_Color.jpg" type="Texture" id=7]
+[ext_resource path="res://Textures/Plaster.tres" type="Material" id=8]
+[ext_resource path="res://Textures/Cracked_Plaster.tres" type="Material" id=9]
+[ext_resource path="res://Textures/Wrecked_Plaster.tres" type="Material" id=10]
+[ext_resource path="res://UI/InputRemapMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/The Ninth Crewman.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/coin.wav" type="AudioStream" id=13]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 50 )
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+albedo_texture = ExtResource( 7 )
+roughness_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
 
 [sub_resource type="ConvexPolygonShape" id=3]
 points = PoolVector3Array( 50, 0, 25, -50, 0, 25, 50, 0, -25, -50, 0, -25 )
@@ -40,6 +54,14 @@ radius = 0.5
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.4, 0.1, 0.1 )
 
+[sub_resource type="ProceduralSky" id=13]
+sky_top_color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+sky_horizon_color = Color( 0.490196, 0.443137, 0.32549, 1 )
+
+[sub_resource type="Environment" id=14]
+background_mode = 2
+background_sky = SubResource( 13 )
+
 [node name="Game" type="Spatial"]
 
 [node name="Maze" type="Spatial" parent="."]
@@ -51,6 +73,16 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Maze/Ground"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 5.91775, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Maze/Ceiling"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Maze/Ceiling"]
 shape = SubResource( 3 )
 
 [node name="key" parent="Maze" instance=ExtResource( 3 )]
@@ -76,7 +108,8 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
 mesh = SubResource( 5 )
-material/0 = null
+
+material/0 = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25 )
@@ -85,7 +118,8 @@ shape = SubResource( 6 )
 [node name="MeshInstance2" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
 mesh = SubResource( 5 )
-material/0 = null
+
+material/0 = ExtResource( 8 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -25 )
@@ -94,7 +128,8 @@ shape = SubResource( 7 )
 [node name="MeshInstance3" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
 mesh = SubResource( 8 )
-material/0 = null
+
+material/0 = ExtResource( 8 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0 )
@@ -103,7 +138,8 @@ shape = SubResource( 9 )
 [node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
 mesh = SubResource( 8 )
-material/0 = null
+
+material/0 = ExtResource( 8 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 3, 0 )
@@ -115,6 +151,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 30.5464
+material = ExtResource( 8 )
 
 [node name="CSGBox22" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9204, 3, 8.92299 )
@@ -122,6 +159,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 16.9302
+material = ExtResource( 10 )
 
 [node name="CSGBox28" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0972, 2.95861, -8.15327 )
@@ -129,6 +167,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 33.2406
+material = ExtResource( 8 )
 
 [node name="CSGBox31" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5193, 2.95861, -8.78451 )
@@ -136,6 +175,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 33.2406
+material = ExtResource( 8 )
 
 [node name="CSGBox23" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.461, 3, 16.8841 )
@@ -143,6 +183,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 16.9914
+material = ExtResource( 8 )
 
 [node name="CSGBox25" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5866, 3, 11.1654 )
@@ -150,6 +191,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 16.9914
+material = ExtResource( 9 )
 
 [node name="CSGBox24" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.461, 3, -16.4947 )
@@ -157,6 +199,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 17.938
+material = ExtResource( 8 )
 
 [node name="CSGBox2" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -30.4875, 3, 20.4088 )
@@ -164,11 +207,13 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 11.2624
+material = ExtResource( 10 )
 
 [node name="CSGSphere" type="CSGSphere" parent="Maze/CSGBox2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 1.86724, 4.25571 )
 operation = 2
 radius = 3.0
+material = ExtResource( 5 )
 
 [node name="CSGBox32" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5.09875, 3, 20.1984 )
@@ -176,6 +221,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 8.23868
+material = ExtResource( 8 )
 
 [node name="CSGBox33" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 20.5723, 3, 20.1984 )
@@ -183,6 +229,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 11.1422
+material = ExtResource( 9 )
 
 [node name="CSGBox34" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 13.4833, 3, -7.96093 )
@@ -190,6 +237,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 6.43633
+material = ExtResource( 10 )
 
 [node name="CSGBox20" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 40.8816, 3, 12.6675 )
@@ -197,12 +245,14 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 18.5824
+material = ExtResource( 8 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze/CSGBox20"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, -1.57625, -0.156506 )
 operation = 2
 width = 4.0
 height = 4.0
+material = ExtResource( 9 )
 
 [node name="CSGBox15" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -45.9282, 3, -3.8055 )
@@ -210,6 +260,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 8.23868
+material = ExtResource( 9 )
 
 [node name="CSGBox3" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5645, 3, -4.92486 )
@@ -217,16 +268,19 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 16.9302
+material = ExtResource( 10 )
 
 [node name="CSGSphere" type="CSGSphere" parent="Maze/CSGBox3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62184, -8.0455 )
 operation = 2
 radius = 3.0
+material = ExtResource( 5 )
 
 [node name="CSGSphere2" type="CSGSphere" parent="Maze/CSGBox3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30103, 7.36709 )
 operation = 2
 radius = 3.0
+material = ExtResource( 5 )
 
 [node name="CSGBox21" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1556, 3, 18.6154 )
@@ -234,6 +288,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 12.9562
+material = ExtResource( 10 )
 
 [node name="CSGSphere" type="CSGSphere" parent="Maze/CSGBox21"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5122, 1.84141, -32.935 )
@@ -244,6 +299,7 @@ radius = 2.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322113, 2.8855, -5.95754 )
 operation = 2
 radius = 3.0
+material = ExtResource( 5 )
 
 [node name="CSGSphere4" type="CSGSphere" parent="Maze/CSGBox21"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58264, 2.8855, -5.95754 )
@@ -261,6 +317,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 50.7537
+material = ExtResource( 8 )
 
 [node name="CSGSphere" type="CSGSphere" parent="Maze/CSGBox7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5832, 1.22105, 2.31034 )
@@ -271,11 +328,13 @@ radius = 2.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10964, -22.6762 )
 operation = 2
 radius = 2.5
+material = ExtResource( 5 )
 
 [node name="CSGSphere5" type="CSGSphere" parent="Maze/CSGBox7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.780243, -20.0031 )
 operation = 2
 radius = 2.5
+material = ExtResource( 5 )
 
 [node name="CSGSphere6" type="CSGSphere" parent="Maze/CSGBox7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3952, -18.4784 )
@@ -286,6 +345,7 @@ radius = 2.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.349529, 2.3952, 19.9571 )
 operation = 2
 radius = 2.5
+material = ExtResource( 5 )
 
 [node name="CSGSphere7" type="CSGSphere" parent="Maze/CSGBox7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4719, 2.3952, -12.3945 )
@@ -296,34 +356,40 @@ radius = 2.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5544, 2.10964, 20.0167 )
 operation = 2
 radius = 2.5
+material = ExtResource( 5 )
 
 [node name="CSGSphere4" type="CSGSphere" parent="Maze/CSGBox7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.54981, -16.7391 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06631, -16.7391 )
 operation = 2
 radius = 2.5
+material = ExtResource( 5 )
 
 [node name="CSGSphere9" type="CSGSphere" parent="Maze/CSGBox7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22625, -14.0908 )
 operation = 2
 radius = 3.0
+material = ExtResource( 5 )
 
 [node name="CSGBox4" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0272, 3, -18.9903 )
 width = 1.0
 height = 6.0
 depth = 12.7942
+material = ExtResource( 10 )
 
 [node name="CSGBox12" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1296, 3, 19.1479 )
 width = 1.0
 height = 6.0
 depth = 12.7942
+material = ExtResource( 8 )
 
 [node name="CSGBox5" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4767, 3, -19.1106 )
 width = 1.0
 height = 6.0
 depth = 12.7524
+material = ExtResource( 9 )
 
 [node name="CSGBox10" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4767, 3, 18.8749 )
@@ -331,6 +397,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 12.7524
+material = ExtResource( 9 )
 
 [node name="CSGBox8" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2355, 3, -19.1106 )
@@ -338,6 +405,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 12.7524
+material = ExtResource( 9 )
 
 [node name="CSGBox29" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6922, 3, -19.1106 )
@@ -345,6 +413,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 12.7524
+material = ExtResource( 9 )
 
 [node name="CSGBox11" type="CSGBox" parent="Maze"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47117, 3, 18.8068 )
@@ -352,6 +421,7 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 12.7524
+material = ExtResource( 8 )
 
 [node name="CSGBox6" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -24.2702, 3, -13.1145 )
@@ -359,11 +429,13 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 10.6699
+material = ExtResource( 9 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze/CSGBox6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41186, -1.52554 )
 operation = 2
 height = 4.0
+material = ExtResource( 8 )
 
 [node name="CSGBox30" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 15.8012, 3, -13.1145 )
@@ -371,11 +443,13 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 10.6699
+material = ExtResource( 9 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze/CSGBox30"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.18981, -1.0115 )
 operation = 2
 height = 4.0
+material = ExtResource( 8 )
 
 [node name="CSGBox14" type="CSGBox" parent="Maze"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -14.5244, 3, 12.8904 )
@@ -383,11 +457,13 @@ use_collision = true
 width = 1.0
 height = 6.0
 depth = 10.6699
+material = ExtResource( 9 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze/CSGBox14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11775, -1.31639 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -1.11775, -1.31639 )
 operation = 2
 height = 4.0
+material = ExtResource( 9 )
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -49, 0, 0 )
@@ -405,4 +481,80 @@ shape = SubResource( 12 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="Camera" type="Camera" parent="Player/Pivot"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 14 )
+
+[node name="SpotLight" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -46.576, 4.41551, 0.57429 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 5.97193
+spot_angle = 63.2812
+
+[node name="SpotLight5" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -24.8124, 4.41551, -19.3371 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 6.91969
+spot_angle = 48.1477
+
+[node name="SpotLight8" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, 16.1798, 4.41551, -19.3371 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 6.91969
+spot_angle = 48.1477
+
+[node name="SpotLight9" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, 45.5578, 4.41551, 19.7827 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 6.91969
+spot_angle = 48.1477
+
+[node name="SpotLight6" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -13.6142, 4.41551, 19.9142 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 6.02428
+spot_angle = 63.2812
+
+[node name="SpotLight2" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -27.371, 4.43295, -6.18323 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 11.9695
+spot_angle = 60.5603
+
+[node name="SpotLight3" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -42.2139, 4.43295, -16.7196 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 9.71904
+spot_angle = 65.0864
+
+[node name="SpotLight4" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, -8.7346, 4.43295, -3.22604 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 15.2914
+spot_angle = 75.2499
+
+[node name="SpotLight7" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, 10.259, 4.43295, -0.0167766 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 12.894
+spot_angle = 70.8527
+
+[node name="SpotLight10" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.0843039, 0.99644, 0, -0.99644, 0.0843039, 36.2331, 4.20406, -0.0167766 )
+light_color = Color( 0.976471, 0.941176, 0.815686, 1 )
+spot_range = 12.894
+spot_angle = 70.8527
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[node name="Key" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="UI" instance=ExtResource( 11 )]
+pause_mode = 2
+visible = false
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
