@@ -32,6 +32,6 @@ Furnish the hospital and add mementos from the deceased patients to collect.
 
 # Created by: QWERTY
 Juliana Hand (level design and coding, key and exit code, enemy mesh)
-Chloe Tod (and contributions)
+Chloe Tod (brainstorming, rigging)
 Liv Callahan (UI coding and design, environment textures and lighting, music and sound effects)
 Jamie Dunbar (Handled majority of coding and debugging)
