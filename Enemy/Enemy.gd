@@ -7,7 +7,7 @@ onready var rc = $RayCast
 
 func _physics_process(_delta):
 	if player == null:
-		player = get_node_or_null("/root/Game/Player_Container/Player")
+		player = get_node_or_null("/root/Game/Player")
 	if player != null:
 		look_at(player.global_transform.origin, Vector3.UP)
 	if rc.is_colliding():
