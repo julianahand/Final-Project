@@ -9,7 +9,7 @@ Escape the hospital alive.
 Use the arrow keys to move your character through the building and avoid enemies.
 
 ## Impediments
-Issues with implementation of skinning within Blender. Challenges collaborating through solely virtual coommunication. When trying to merge different branches together, problems would arise such as the player falling through the floor or the pause menu being deleted. We underestimated the severity of the time constraint compared to our ambitions with the project.
+Issues with implementation of skinning within Blender. Challenges collaborating through solely virtual communication. When trying to merge different branches together, problems would arise such as the player falling through the floor or the pause menu being deleted. We underestimated the severity of the time constraint compared to our ambitions with the project.
 
 ## Implementation
 Built using Godot 3.2.3 and Blender 2.92.0, WASD mappings
